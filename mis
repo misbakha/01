@@ -1,0 +1,140 @@
+echo "enter two numbers"
+read num1
+read num2
+
+sum=$((num1+num2))
+diff=$((num1-num2))
+product=$((num1*num2))
+quotient=$((num1/num2))
+
+echo "sum: $sum"
+echo "diff: $diff"
+echo "product: $product"
+echo "quotient: $quotient"
+
+echo "enter two strings"
+read string1
+read string2
+
+concatenate_string="$string1$string2"
+echo "concatenate_string: $concatenate_string"
+
+2.
+echo "enter year"
+read year
+
+if [ $((year % 4)) -eq 0 ] && [ $((year % 100)) -ne 0 ] || [ $((year % 400)) -eq 0 ]; then
+echo "$year is leap year"
+else 
+echo "$year is not leapyear"
+fi
+
+3.
+echo "enter file_path"
+read file_path
+if [ -d "$file_path" ]; then
+echo "file is a directory"
+else
+echo "file is not a directory"
+fi
+4.
+"enter in lowercase"
+read inputstring
+
+uppercase_string=$(echo "$inputstring1" | tr '[:lower:]' '[:upper:]')
+echo "uppercase version:$uppercase_string"
+5.
+echo "enter 1st num"
+read n1
+echo "enter 2nd num"
+read n2
+m=$n1
+n=$n2
+r=$n2
+while [ $r - ne 0 ]; do
+r=$((n1%n2))
+if [ $r -eq 0 ]; then
+break
+else
+((n1=$n2))
+((n2=$r))
+fi 
+
+done
+echo "gcd of %d and %d is %d/n" $m $n $n
+echo "lcm of %d and %d is %d/n" $m $n $((($m*$n)/$n2))
+
+6.
+echo "enter num"
+read num
+
+reverse=$(echo $num | rev)
+
+if [ $num -eq $reverse ]; then 
+
+echo "$num is palindrome"
+else
+echo "$num is not palindrome"
+fi
+7.
+
+echo "enter a  num"
+read num
+is_prime=true
+
+if [ $num -lt 2 ]; then
+is_prime=false
+
+fi
+
+for((i=2;i*i<=num;i++)); do
+if [ $((num % i)) -eq 0 ]; then
+is_prime=false
+break
+fi
+done
+
+if $is_prime; then
+echo "$num is a prime number"
+else
+echo "$num is not a prime number"
+fi
+
+8.
+echo "enter a pattern"
+read pattern
+
+echo "enter a file to search"
+read filename
+
+if grep -q "$pattern" "$filename"; then
+echo "pattern found in file"
+else
+echo "patten not found in file"
+fi
+
+9.
+echo "enter username"
+read username
+
+echo "enter password"
+read password
+
+valid_username="user"
+valid_password="password"
+
+if [ "$username" == "$valid_username" ] && [ "$password" == "$valid_password" ]; then
+echo "login success"
+else
+echo "login unsuccess"
+fi
+
+10.
+if [ $# -eq 0 ];then
+echo "no arguments"
+exit 1
+fi
+
+for ((i=$#;i>0;i--)); do
+echo "${!i}"
+done
